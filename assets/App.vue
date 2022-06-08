@@ -3,9 +3,9 @@
     <mobile-menu v-if="isMobile && !authorizationNeeded"></mobile-menu>
 
     <splitpanes @resized="onResized($event)">
-      <pane min-size="10" :size="menuWidth" v-if="!authorizationNeeded && !isMobile && !collapseNav">
+      <!-- <pane min-size="10" :size="menuWidth" v-if="!authorizationNeeded && !isMobile && !collapseNav">
         <side-menu @search="showFuzzySearch"></side-menu>
-      </pane>
+      </pane> -->
       <pane min-size="10">
         <splitpanes>
           <pane class="has-min-height router-view">
@@ -25,7 +25,7 @@
         </splitpanes>
       </pane>
     </splitpanes>
-    <button
+    <!-- <button
       @click="collapseNav = !collapseNav"
       class="button is-rounded"
       :class="{ collapsed: collapseNav }"
@@ -38,7 +38,7 @@
       <span class="icon" v-else>
         <mdi-light-chevron-left />
       </span>
-    </button>
+    </button> -->
   </main>
 </template>
 
@@ -51,7 +51,7 @@ import hotkeys from "hotkeys-js";
 
 import { setTitle } from "@/composables/title";
 import { isMobile } from "@/composables/media";
-import { smallerScrollbars, lightTheme, menuWidth } from "@/composables/settings";
+import { smallerScrollbars, lightTheme } from "@/composables/settings";
 import { useContainerStore } from "@/stores/container";
 import config from "@/stores/config";
 
@@ -60,7 +60,7 @@ import LogContainer from "@/components/LogContainer.vue";
 import SideMenu from "@/components/SideMenu.vue";
 import MobileMenu from "@/components/MobileMenu.vue";
 
-const collapseNav = ref(false);
+// const collapseNav = ref(false);
 const { oruga } = useProgrammatic();
 const { authorizationNeeded } = config;
 
@@ -121,11 +121,11 @@ function showFuzzySearch() {
     active: true,
   });
 }
-function onResized(e) {
-  if (e.length == 2) {
-    menuWidth.value = e[0].size;
-  }
-}
+// function onResized(e) {
+//   if (e.length == 2) {
+//     menuWidth.value = e[0].size;
+//   }
+// }
 </script>
 
 <style scoped lang="scss">
