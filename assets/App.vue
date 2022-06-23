@@ -51,7 +51,7 @@ import hotkeys from "hotkeys-js";
 
 import { setTitle } from "@/composables/title";
 import { isMobile } from "@/composables/media";
-import { smallerScrollbars, lightTheme } from "@/composables/settings";
+import { smallerScrollbars } from "@/composables/settings";
 import { useContainerStore } from "@/stores/container";
 import config from "@/stores/config";
 
@@ -72,16 +72,19 @@ onMounted(() => {
   if (smallerScrollbars.value) {
     document.documentElement.classList.add("has-custom-scrollbars");
   }
-  switch (lightTheme.value) {
-    case "dark":
-      document.documentElement.setAttribute("data-theme", "dark");
-      break;
-    case "light":
-      document.documentElement.setAttribute("data-theme", "light");
-      break;
-    default:
-      document.documentElement.removeAttribute("data-theme");
-  }
+
+  // always set to light theme
+  document.documentElement.setAttribute("data-theme", "light");
+  // switch (lightTheme.value) {
+  //   case "dark":
+  //     document.documentElement.setAttribute("data-theme", "dark");
+  //     break;
+  //   case "light":
+  //     document.documentElement.setAttribute("data-theme", "light");
+  //     break;
+  //   default:
+  //     document.documentElement.removeAttribute("data-theme");
+  // }
 
   hotkeys("command+k, ctrl+k", (event, handler) => {
     event.preventDefault();
@@ -100,16 +103,18 @@ watchEffect(() => {
     document.documentElement.classList.remove("has-custom-scrollbars");
   }
 
-  switch (lightTheme.value) {
-    case "dark":
-      document.documentElement.setAttribute("data-theme", "dark");
-      break;
-    case "light":
-      document.documentElement.setAttribute("data-theme", "light");
-      break;
-    default:
-      document.documentElement.removeAttribute("data-theme");
-  }
+  // always set to light theme
+  document.documentElement.setAttribute("data-theme", "light");
+  // switch (lightTheme.value) {
+  //   case "dark":
+  //     document.documentElement.setAttribute("data-theme", "dark");
+  //     break;
+  //   case "light":
+  //     document.documentElement.setAttribute("data-theme", "light");
+  //     break;
+  //   default:
+  //     document.documentElement.removeAttribute("data-theme");
+  // }
 });
 
 function showFuzzySearch() {
